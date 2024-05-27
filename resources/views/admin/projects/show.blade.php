@@ -23,8 +23,8 @@
                 <div class="col-6">
                     <ul class="list-unstyled d-flex flex-column gap-2">
                         <li>
-                            <strong>Description: </strong>
-                            <p>{{ $project->description }}</p>
+                            <strong>Description: </strong><br>
+                            {{ $project->description }}
                         </li>
                         <li>
                             <strong>Type: </strong><br>
@@ -45,6 +45,16 @@
                         <li>
                             <strong>End Date: </strong><br>
                             {{ $project->end_date }}
+                        </li>
+                        <li>
+                            <strong>Technologies: </strong>
+                            <div class="d-flex flex-wrap gap-2 mt-1">
+                                @forelse ($project->technologies as $technology)
+                                    <span class="badge text-bg-primary">{{ $technology->name }}</span>
+                                @empty
+                                    <span class="badge text-bg-secondary">Nothing found</span>
+                                @endforelse
+                            </div>
                         </li>
                     </ul>
                 </div>
