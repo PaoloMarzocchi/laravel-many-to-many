@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
@@ -13,7 +14,9 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $techs = Technology::orderByDesc('id')->paginate(5);
+
+        return view('admin.technologies.index', compact('techs'));
     }
 
     /**
