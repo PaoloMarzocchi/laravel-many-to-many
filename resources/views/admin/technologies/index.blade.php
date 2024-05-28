@@ -64,7 +64,10 @@
                                         </td>
                                         <td>{{ $tech->slug }}</td>
                                         <td>
-                                            {{ $tech->projects->count() }}
+
+                                            <a class="btn btn-primary px-4" href="{{ route('admin.filtered', $tech) }}">
+                                                {{ $tech->projects->count() }}
+                                            </a>
                                         </td>
 
                                         <td width='150'>

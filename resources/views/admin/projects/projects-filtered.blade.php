@@ -4,11 +4,11 @@
     <section class="py-3 admin_section">
         <div class="container">
             <h2 class="title_section">
-                Projects list for {{ $type->name }}
+                Projects list for {{ $filtered->name }}
             </h2>
             <div class="d-flex justify-content-end pb-2 gap-2">
-                <a class="btn btn-secondary" href="{{ route('admin.types.index') }}">
-                    Types list
+                <a class="btn btn-secondary" href="{{ url()->previous() }}">
+                    Back
                 </a>
             </div>
 
@@ -117,7 +117,7 @@
                     </tbody>
                 </table>
             </div>
-            {{ $projects->links('pagination::bootstrap-5') }}
+            {{-- {{ $projects->links('pagination::bootstrap-5') }} --}}
         </div>
     </section>
 @endsection

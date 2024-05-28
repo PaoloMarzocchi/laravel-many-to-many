@@ -7,6 +7,7 @@ use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -17,24 +18,12 @@ class TypeController extends Controller
      */
     public function index(Request $request, Type $type)
     {
-        $types = Type::orderByDesc('id')->paginate(5);
+
+
+        $types = Type::orderByDesc('id')->paginate(8);
 
         return view('admin.types.index', compact('types'));
     }
-
-    /**
-     * Display a listing of the Projects filtered by the common Type
-     */
-    public function filtered(Type $type)
-    {
-        //dd($type);
-
-        $projects = Project::orderByDesc('id')->where('type_id', $type->id)->paginate(5);
-
-        //dd($projects, $type->id);
-        return view('admin.types.projects-filtered', compact('projects', 'type'));
-    }
-
 
 
     /**

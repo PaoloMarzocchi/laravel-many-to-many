@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\FilterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,7 +37,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/types/projects-filtered/{type}', [TypeController::class, 'filtered'])->name('filtered');
+        Route::get('/projects-filtered/{id}', [FilterController::class, 'filter'])->name('filtered');
 
         Route::resource('projects', ProjectController::class)->parameters([
             'projects' => 'project:slug'
