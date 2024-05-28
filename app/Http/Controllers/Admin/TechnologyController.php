@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -32,7 +33,21 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        //dd($request->all());
+
+        $val_data = $request->validated();
+
+
+
+
+        $slug = Str::slug($request->name, '-');
+
+        $val_data['slug'] = $slug;
+        //dd($val_data);
+
+        $tech = Technology::create($val_data);
+
+        return to_route('admin.technologies.index')->with('message', "Technology '$tech->name' created successfully!");
     }
 
     /**
@@ -56,7 +71,16 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $val_data = $request->validated();
+
+        $slug = Str::slug($request->name, '-');
+
+        $val_data['slug'] = $slug;
+        //dd($val_data);
+
+        $technology->update($val_data);
+
+        return to_route('admin.technologies.index')->with('message', "Technology '$technology->name' updated successfully!");
     }
 
     /**
@@ -64,6 +88,8 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+
+        return to_route('admin.technologies.index')->with('message', "Technology '$technology->name' deleted successfully!");
     }
 }
