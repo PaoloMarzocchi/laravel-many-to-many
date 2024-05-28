@@ -12,7 +12,8 @@
 @mixin btn_hover {
     color: $lightest;
 
-    &:hover {
+    &:hover,
+    &:focus {
 
         filter: opacity(0.8);
         color: $lightest;
@@ -32,7 +33,8 @@
     background-color: $primary;
     @include btn_hover;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: $primary;
     }
 }
@@ -41,7 +43,8 @@
     background-color: $success;
     @include btn_hover;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: $success;
     }
 }
@@ -50,7 +53,8 @@
     background-color: $dark;
     @include btn_hover;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: $dark;
     }
 }
