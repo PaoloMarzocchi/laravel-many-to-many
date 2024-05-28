@@ -11,7 +11,7 @@
 
             @include('partials.confirm-form')
 
-            <div class="row py-3 justify-content-center">
+            <div class="row vh-100 py-3 justify-content-center">
 
                 <div class="col-6 text-center">
 

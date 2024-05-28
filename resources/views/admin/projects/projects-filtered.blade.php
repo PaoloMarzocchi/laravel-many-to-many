@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <section class="py-3 admin_section">
+    <section class="py-3 vh-100 admin_section">
         <div class="container">
             <h2 class="title_section">
                 Projects list for {{ $filtered->name }}

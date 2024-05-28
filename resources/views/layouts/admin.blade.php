@@ -28,9 +28,13 @@
     <div id="app">
 
         @include('partials.admin-header')
+
         <main class="">
             @yield('content')
         </main>
+
+        @include('partials.site-footer')
+
     </div>
 </body>
 
